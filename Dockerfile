@@ -1,16 +1,19 @@
-FROM node:18-alpine3.14
+FROM node:16.15-alpine
 
 
 WORKDIR /app
 
 
+COPY package.json ./
+
+
+RUN npm install
+
+
 COPY . .
-
-
-RUN npm i
 
 
 EXPOSE 5005
 
 
-CMD ["node" ,'index.js']
+CMD [ "node", "server.js" ]
