@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ctse-ecommerce-user-function
+  name: ctse-ecommerce-user-function
+spec:
+  ports:
+  - port: 5005
+    protocol: TCP
+    targetPort: 5005
+  selector:
+    app: ctse-ecommerce-user-function
+status:
+  loadBalancer: {}
