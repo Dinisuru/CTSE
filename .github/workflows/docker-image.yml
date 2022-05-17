@@ -26,8 +26,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ctse-ecommerce-cart-function:${{ github.sha }}
+      - name: Update config files in k8s
+        run: sed -i.bak 's/{{tag}}/${{ github.sha }}/g' k8s/deploy.yaml  && rm k8s/*.bak
       - uses: actions-hub/kubectl@master
         env:
-          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: get namespaces
+          args: apply -f ./k8s

@@ -25,7 +25,7 @@ spec:
         app: ctse-ecommerce-user-function
     spec:
       containers:
-        - image: dinisuru/ctse-ecommerce-user-function:initial
+        - image: dinisuru/ctse-ecommerce-user-function:{{tag}}
           imagePullPolicy: Always
           name: ctse-ecommerce-user-function
           resources: {}
